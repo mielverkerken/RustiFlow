@@ -47,17 +47,17 @@ You can then run the binary with the following commands displayed on the [help m
 
 ### Using the tui interface:
 
-If you want a more graphical interface, you can use the tui interface by just running `rustiflow` without any arguments. This will open the following interface:
+If you want a more graphical interface, you can use the tui interface by just running `rustiflow` without any arguments. This will open a field where you can enter a configuration file you want to edit or you can choose to start new. After that, the following interface will show up:
 
 ![The tui interface](figures/tui_rustiflow.GIF)
 
-> **NOTE:** When using the save button, the current selection will be saved to the `rustiflow.toml` file. You can reuse this file with following command:
+> **NOTE:** When using the save button, you will be prompted for a filename. You can reuse this file with following command:
   ```bash
-  rustiflow --config-file rustiflow.toml realtime <interface> [--only-ingress]
+  rustiflow --config-file <filename> realtime <interface> [--only-ingress]
   ```
 
   ```bash
-  rustiflow -c rustiflow.toml pcap <path to pcap file>
+  rustiflow -c <filename> pcap <path to pcap file>
   ```
 > After saving the configuration file, you can safely reset without changing the configuration file.
 
@@ -239,6 +239,20 @@ Make sure that you don't use docker desktop and that you don't have it installed
                 Print version
 
   ```
+
+## Logging in both development or using the binary
+
+### Development
+
+```bash
+RUST_LOG=info cargo xtask run --
+```
+
+### Binary
+
+```bash
+sudo RUST_LOG=info rustiflow
+```
 
 **Note:** For specific logging levels, adjust `RUST_LOG` to `error` for error messages, and `debug` for debug messages. If you don't want any additional logs, just remove `RUST_LOG=info`.
 
